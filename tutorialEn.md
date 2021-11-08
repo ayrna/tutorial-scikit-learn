@@ -57,7 +57,7 @@ Jupyter Notebooks
 
 ![](images/ipython_help-1.png)
 
-* You can also obtain help by using ``function?``
+* You can also get help by using ``function?``
 
 ![](images/ipython_help-2.png)
 
@@ -77,7 +77,7 @@ With these lines, we import the neccesary libraries for our example. `pandas` wi
 
 ## matplotlib
 
-A very important part of machine learning is data visualizing. The most common tool for that in Python is [`matplotlib`](http://matplotlib.org). It is a very flexible package and we will study now some of its elements.
+A very important part of machine learning is data visualization. The most common tool for that in Python is [`matplotlib`](http://matplotlib.org). It is a very flexible package and we will study now some of its elements.
 
 Given that we are using Jupyter notebooks, we need to consider one the [magic commands](https://ipython.org/ipython-doc/3/interactive/magics.html) of IPython, the "*matoplotlib inline*" mode, which will *plots* directly on the notebook.
 
@@ -99,7 +99,9 @@ plt.plot(x, np.sin(x));
 ```
 
 
+    
 ![png](tutorialEn_files/tutorialEn_18_0.png)
+    
 
 
 In Python, generally, it is not needed to use ';' at the end of every line. However, when drawing an *inline* plot, we can use ';' to avoid seeing the normal output of *matplotlib* and to see only the figure.
@@ -114,13 +116,14 @@ plt.scatter(x, y);
 ```
 
 
+    
 ![png](tutorialEn_files/tutorialEn_20_0.png)
+    
 
 
 
 ```python
 # Showing the images using imshow
-
 x = np.linspace(1, 12, 100)
 y = x[:, np.newaxis]
 ```
@@ -140,14 +143,16 @@ plt.imshow(im);
 
 
 
+    
 ![png](tutorialEn_files/tutorialEn_23_1.png)
+    
 
 
 What can you see in the image?
 
 It is a mix of sin and cosine functions.
 
-If you have your doubts, you can always [ask Google](https://www.google.es/search?dcr=0&ei=cGr8WbKFNsmTa_b1n6AI&q=sin%28x%29*cos%28y%29+from+-6+to+6&oq=sin%28x%29*cos%28y%29+from+-6+to+6&gs_l=psy-ab.3...5574.8328.0.8486.6.5.1.0.0.0.79.355.5.5.0....0...1.1.64.psy-ab..0.0.0....0.3Kq-XpUPDRs)
+If you have any doubts, you can always [ask Google](https://www.google.es/search?dcr=0&ei=cGr8WbKFNsmTa_b1n6AI&q=sin%28x%29*cos%28y%29+from+-6+to+6&oq=sin%28x%29*cos%28y%29+from+-6+to+6&gs_l=psy-ab.3...5574.8328.0.8486.6.5.1.0.0.0.79.355.5.5.0....0...1.1.64.psy-ab..0.0.0....0.3Kq-XpUPDRs)
 
 
 
@@ -158,7 +163,9 @@ plt.contour(im);
 ```
 
 
+    
 ![png](tutorialEn_files/tutorialEn_25_0.png)
+    
 
 
 
@@ -166,12 +173,14 @@ plt.contour(im);
 # 3D Plot
 from mpl_toolkits.mplot3d import Axes3D
 ax = plt.axes(projection='3d')
-xgrid, ygrid = np.meshgrid(x, y.ravel())
+xgrid, ygrid = np.meshgrid(x, y)
 ax.plot_surface(xgrid, ygrid, im, cmap=plt.cm.viridis, cstride=2, rstride=2, linewidth=0);
 ```
 
 
+    
 ![png](tutorialEn_files/tutorialEn_26_0.png)
+    
 
 
 There are many plots available. You can explore them by using the [matplotlib gallery](http://matplotlib.org/gallery.html).
@@ -219,12 +228,14 @@ plt.show()
 ```
 
 
+    
 ![png](tutorialEn_files/tutorialEn_28_0.png)
+    
 
 
 # Some samples with the `iris` dataset
 
-We are going to use a typical example in *machine learning*, the `iris` dataset. In this dataset, there are three classes to be predicted, which are three different species of the iris flower, in such a way that, for every flower, four measurements or input variables are extracted (petal and sepal length and width, in cm). The three species to be predicted are iris *setosa*, iris *virginica* and iris *versicolor*.
+We are going to use a typical example in *machine learning* tutorials, the `iris` dataset. In this dataset, there are three classes to be predicted, which are three different species of the iris flower, in such a way that, for every flower, four measurements or input variables are extracted (petal and sepal length and width, in cm). The three species to be predicted are iris *setosa*, iris *virginica* and iris *versicolor*.
 
 ## Reading data
 
@@ -241,7 +252,7 @@ and we read the array with:
 
 
 ```python
-iris = pd.read_csv('https://raw.githubusercontent.com/ayrna/tutorial-scikit-learn-IMC/master/data/iris.csv', names = name_variables)
+iris = pd.read_csv('data/iris.csv', names = name_variables)
 ```
 
 `iris` is an object of the class [`DataFrame`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) from `pandas`. We could have considered `header=None`, in such a way that `read_csv` would have assigned a default name.
@@ -281,7 +292,7 @@ variable_x = 3
 colors = ['blue', 'red', 'green']
 iris_target_names = np.unique(iris['class'])
 
-for index, color in zip(range(len(iris_target_names)), colors): # what zip does?
+for index, color in zip(range(len(iris_target_names)), colors): # what does zip do?
     #We separate the set of every class
     patterns = (iris['class']==iris_target_names[index]) # This comparison will be explained later
     plt.hist(iris.values[patterns, variable_x], label=iris_target_names[index], color=color)
@@ -292,7 +303,9 @@ plt.show()
 ```
 
 
+    
 ![png](tutorialEn_files/tutorialEn_43_0.png)
+    
 
 
 Remember that the variables were *['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class']*, can you modify the previous code to show the sepal_length
@@ -320,7 +333,9 @@ plt.show()
 ```
 
 
+    
 ![png](tutorialEn_files/tutorialEn_46_0.png)
+    
 
 
 Have you found a good combination of the variables?
@@ -352,12 +367,14 @@ else:
 ```
 
 
+    
 ![png](tutorialEn_files/tutorialEn_49_0.png)
+    
 
 
-## Working with `DataFrame` objects and numpy matrices (`ndarray`)
+## Working with numpy matrices (`ndarray`)  and `DataFrame` objects
 
-[`DataFrame`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) objects are the *datasets* the we are going to use. They can perform a lot of operations automatically, helping transform the variables very easilly. Internally, the dataset is stored as 2D array of `numpy` (class [`ndarray`](http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html)). The access of the elements in a [`DataFrame`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) is a bit easier than using the [`ndarray`](http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html) version. We can use the attribute `values` for accessing the `numpy` object:
+[`DataFrame`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) objects are the *datasets* the we are going to use. They can perform a lot of operations automatically, helping to transform the variables very easilly. Internally, the dataset is stored as 2D array of `numpy` (class [`ndarray`](http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html)). The access of the elements in a [`DataFrame`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) is a bit easier than using the [`ndarray`](http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html) version. We can use the attribute `values` for accessing the `numpy` object:
 
 
 ```python
@@ -437,7 +454,7 @@ iris_array[0:2,2:4]
 
 
 ```python
-# The "pandas" is always better looking
+# The "pandas" way is always better looking
 iris[0:2][name_variables[2:4]]
 ```
 
@@ -1089,7 +1106,7 @@ x.T
 
 ## Dividing the data in training and test
 
-Although, sometimes, the training/test split is given, we should now how to do the split. The following code shows a function which randomly divides the dataset, using *vectorized* operations:
+Although sometimes we will get the training/test split, knowing dataset spliting tools and alternatives still a common routine for machine learning practitioners. The following code shows a function which randomly divides the dataset, using *vectorized* operations:
 
 
 ```python
@@ -1127,10 +1144,10 @@ test_outputs_iris = iris_test.values[:,-1]
 print(train_inputs_iris.shape)
 ```
 
-    (89, 4)
+    (98, 4)
 
 
-If we are given the complete dataset to perform the partitions and the validation, all the functions of the module [`sklearn.model_selection`](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.model_selection) from `scikit-learn` can be very helpful.
+If we are given the complete dataset to perform the partitions and the validation, all the functions of the module [`sklearn.model_selection`](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.model_selection) from `scikit-learn` can be very helpful (do pay attention to the alternatives for stratification!).
 
 
 ```python
@@ -1144,7 +1161,7 @@ train_inputs_iris, test_inputs_iris, train_outputs_iris, test_outputs_iris = \
 
 print(train_inputs_iris.shape)
 print(test_inputs_iris.shape)
-print([sum(train_outputs_iris==etiqueta)/train_outputs_iris.shape[0] for etiqueta in np.unique(outputs_iris)])
+print([sum(train_outputs_iris==label)/train_outputs_iris.shape[0] for label in np.unique(outputs_iris)])
 ```
 
     (100, 4)
@@ -1167,7 +1184,13 @@ label_e.fit(train_outputs_iris)
 # Applying the conversion
 train_outputs_iris_encoded = label_e.transform(train_outputs_iris)
 test_outputs_iris_encoded = label_e.transform(test_outputs_iris)
+print(train_outputs_iris_encoded)
 ```
+
+    [2 0 2 1 0 0 0 2 0 0 1 0 1 1 2 2 0 0 2 0 2 0 0 2 0 1 2 1 0 1 0 2 1 2 1 0 2
+     0 2 0 1 1 0 2 1 1 0 2 1 2 0 1 0 2 1 1 1 1 1 1 2 1 2 2 0 2 1 1 2 0 2 2 2 0
+     2 0 0 2 2 2 0 1 2 2 0 1 1 1 1 1 0 2 1 2 0 0 1 0 1 0]
+
 
 As can be observed, we first create the `LabelEncoder` and then it is trained using the method `fit`. For a `LabelEncoder`, "training" means establishing the mapping for the labels, in this case:
 - `Iris-setosa` -> 0
